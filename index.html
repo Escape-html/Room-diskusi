@@ -59,8 +59,7 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
-<script>
-
+    <script>
         if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();
@@ -346,4 +345,24 @@
                                     <div className="flex gap-2 p-1 bg-slate-50 rounded-xl border border-slate-200">
                                         <input className="flex-1 bg-transparent px-4 outline-none text-sm" placeholder="Topik diskusi..." value={topic} onChange={e=>setTopic(e.target.value)} />
                                         <button onClick={generateQ} disabled={loadingAI} className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-indigo-700 disabled:opacity-50">
-                                            {loadingAI ? <Icon name="Loader2" className="animate-spin" size={14}/> : <Icon name="Sparkles" size={14}/>} Bu
+                                            {loadingAI ? <Icon name="Loader2" className="animate-spin" size={14}/> : <Icon name="Sparkles" size={14}/>} Buat
+                                        </button>
+                                    </div>
+                             </div>
+                    ) : (
+                        <div className="bg-green-50 p-8 rounded-3xl border border-green-100 text-center">
+                            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <Icon name="Check" size={32}/>
+                            </div>
+                            <h3 className="text-xl font-bold text-green-800">Jawaban Terkirim</h3>
+                            <p className="text-green-600 mt-2">Menunggu peserta lain...</p>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
